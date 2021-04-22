@@ -1,0 +1,42 @@
+.btn_item {
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+    outline: none;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.disabled{
+    border-color: #9da1a5;
+    color: #9da1a5;
+    cursor: no-drop;
+    transition: 0s ;
+    transform: none;
+    background-color: white;
+}
+
+.btn_item:hover {
+    border: none;
+    color: #bcfada;
+    font-size: 13px;
+    transform: scale(1.1);
+}
+
+.green {
+    border: 2px solid darkgreen;
+    color: darkgreen;
+}
+
+.green:hover {
+    background-color: darkgreen;
+    transition: all 0.3s ease-in-out;
+}
+
+
