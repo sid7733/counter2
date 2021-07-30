@@ -1,20 +1,14 @@
 import React, {ChangeEvent} from "react";
 import s from "./Setting.module.css";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {onChangeMaxValueAC, onChangeStartValueAC} from "../bll/counter-reducer";
+import {AppStateType} from "../bll/store";
 
-
-export type SetPropsType = {
-    maxValue: number
-    startValue: number
-    // errorText: string
-
-}
-
-
-export function Setting(props: SetPropsType) {
+export function Setting() {
 
     const dispatch = useDispatch()
+    const unsavedMaxValue = useSelector<AppStateType, number>(state => state.counter.unsavedMaxValue)
+    const unsavedStartValue = useSelector<AppStateType, number>(state => state.counter.unsavedStartValue)
 
     const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(onChangeMaxValueAC(Number(e.currentTarget.value)))
@@ -30,7 +24,7 @@ export function Setting(props: SetPropsType) {
                 <div className={s.set_text}>max value:</div>
                 <input type='number'
                        className={s.set_input}
-                       value={props.maxValue}
+                       value={unsavedMaxValue}
                        onChange={onChangeMaxValue}
                 />
 
@@ -39,7 +33,7 @@ export function Setting(props: SetPropsType) {
                 <div className={s.set_text}>start value:</div>
                 <input type='number'
                        className={s.set_input}
-                       value={props.startValue}
+                       value={unsavedStartValue}
                        onChange={onChangeStartValue}
                 />
             </div>

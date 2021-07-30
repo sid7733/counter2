@@ -13,7 +13,7 @@ store.subscribe(() => {
     saveState({
         counter: store.getState().counter
     })
-    // localStorage.setItem('app-state', JSON.stringify(store.getState()))
+    localStorage.setItem('app-state', JSON.stringify(store.getState()))
 })
 
 

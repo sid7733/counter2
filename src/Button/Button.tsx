@@ -7,8 +7,6 @@ export type ButtonPropsType = {
     disabled: boolean
 }
 
-
-
 export function Button(props:ButtonPropsType){
     return (
     <button

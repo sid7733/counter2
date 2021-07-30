@@ -1,33 +1,30 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import s from "./Display.module.css";
-import {useDispatch, useSelector} from "react-redux";
-import { onChangeSetCounterValueAC} from "../bll/counter-reducer";
+import {useSelector} from "react-redux";
 import {AppStateType} from "../bll/store";
-//
-// export type DisplayPropsType = {
-//     incValue: number
-//     maxValue: number
-//
-// }
 
+type PropsType = {
+    errorText: string
+}
 
-export function Display() {
+export function Display({errorText}: PropsType) {
+    const displayValue = useSelector<AppStateType, number | null>(state => state.counter.displayValue)
+    const savedMaxValue = useSelector<AppStateType, number | null>(state => state.counter.savedMaxValue)
 
-    const displayValue = useSelector<AppStateType, number>(state => state.counter.displayValue)
-
-
+    const ErrorStyle = Boolean(errorText)
+        ? s.red
+        : displayValue === savedMaxValue
+            ? s.red
+            : ''
 
     return (
         <div className={s.disp}>
-            <h1>{displayValue}</h1>
-            {/*<div*/}
-            {/*    className={incValue === maxValue ? s.red : ""}*/}
-            {/*    onChange ={onChangeSetCounterValue}*/}
-            {/*    >*/}
-            {/*    {incValue}*/}
-
-            {/*/!*   тернарное выражение, если есть ошибка - текст ошибки, если устанавливается значение, сообщение о необходимости наджать кнопку set*!/*/}
-            {/*</div>*/}
+            <div className={ErrorStyle}>{
+                Boolean(errorText)
+                    ? errorText
+                    : displayValue !== null
+                    ? displayValue
+                    : 'choose start value and press "set"'}</div>
         </div>
     )
 }

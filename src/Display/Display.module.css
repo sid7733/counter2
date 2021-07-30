@@ -9,12 +9,17 @@
     border-radius: 7px;
     background-color: springgreen;
     margin-bottom: 20px;
-    color: darkgreen;
+
     text-align: center;
     padding: 20px 0px 0px 0px;
 
 }
 
-.red {
+.red{
     color: red;
+}
+
+.darkgreen{
+    color: darkgreen;
+
 }
