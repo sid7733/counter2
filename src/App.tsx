@@ -31,6 +31,7 @@ function App() {
     const ResetCount = () => {
         dispatch(resetValueAC())
     }
+
     let errorText = ''
 
     if (unsavedStartValue < 0) {
@@ -52,9 +53,7 @@ function App() {
                     <Setting/>
                 </div>
                 <div className={s.btn_container}>
-                    <Button onClick={SetCount} title="set" disabled={Boolean(errorText)}></Button>
-
-
+                    <Button onClick={SetCount} title="set" disabled={Boolean(errorText) }></Button>
                 </div>
             </div>
 

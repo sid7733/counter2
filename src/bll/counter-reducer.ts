@@ -33,15 +33,11 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
             }
 
         case 'INCREASE-DISPLAY-VALUE':
-            return  {...state, displayValue: (state.displayValue || 0) + 1}
+            return {...state, displayValue: (state.displayValue || 0) + 1}
 
-
-        case 'SET-VALUE-FROM-LOCALSTORAGE':
+        case 'SET-VALUES-FROM-LOCALSTORAGE':
             return {
-                ...state,
-                savedMaxValue: action.savedMaxValue,
-                savedStartValue: action.savedStartValue,
-                displayValue: action.displayValue
+                ...state
             }
 
         case 'RESET-VALUE':
@@ -51,33 +47,23 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
         default:
             return state
     }
-
-
 }
-
 
 export const onChangeMaxValueAC = (maxValue: number) => ({type: 'SET-MAX-VALUE', maxValue} as const)
 export const onChangeStartValueAC = (startValue: number) => ({type: 'SET-START-VALUE', startValue} as const)
 export const onChangeSetCounterValueAC = (startValue: number) => ({type: 'SET-COUNTER-VALUE', startValue} as const)
 export const setValueAC = () => ({type: 'SET-VALUES'} as const)
 export const increaseDisplayValueAC = () => ({type: 'INCREASE-DISPLAY-VALUE'} as const)
-export const setValueFromLocalstorageAC = (savedMaxValue: number, savedStartValue: number, displayValue: number) => ({
-    type: 'SET-VALUE-FROM-LOCALSTORAGE',
-    savedMaxValue,
-    savedStartValue,
-    displayValue
-} as const)
+export const setValuesFromLocalstorageAC = () => ({type: 'SET-VALUES-FROM-LOCALSTORAGE'} as const)
 export const resetValueAC = () => ({type: 'RESET-VALUE'} as const)
-
 
 export type OnChangeMaxValueType = ReturnType<typeof onChangeMaxValueAC>
 export type OnChangeStartValueType = ReturnType<typeof onChangeStartValueAC>
 export type onChangeSetCounterValueType = ReturnType<typeof onChangeSetCounterValueAC>
 export type SetValueActionType = ReturnType<typeof setValueAC>
 export type IncreaseDisplayValueActionType = ReturnType<typeof increaseDisplayValueAC>
-export type SetValueFromLocalstorageActionType = ReturnType<typeof setValueFromLocalstorageAC>
+export type SetValuesFromLocalstorageActionType = ReturnType<typeof setValuesFromLocalstorageAC>
 export type ResetValueActionType = ReturnType<typeof resetValueAC>
-
 
 type ActionType =
     OnChangeMaxValueType
@@ -85,5 +71,6 @@ type ActionType =
     | onChangeSetCounterValueType
     | SetValueActionType
     | IncreaseDisplayValueActionType
-    | SetValueFromLocalstorageActionType
+    | SetValuesFromLocalstorageActionType
     | ResetValueActionType
+
