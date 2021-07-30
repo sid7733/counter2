@@ -11,15 +11,19 @@ export function Display({errorText}: PropsType) {
     const displayValue = useSelector<AppStateType, number | null>(state => state.counter.displayValue)
     const savedMaxValue = useSelector<AppStateType, number | null>(state => state.counter.savedMaxValue)
 
-    const ErrorStyle = Boolean(errorText)
-        ? s.red
+    const MessageStyle = Boolean(errorText)
+        ? s.error
         : displayValue === savedMaxValue
             ? s.red
-            : ''
+            : displayValue
+                ? ''
+                : displayValue === 0
+                    ? ''
+                    : s.message
 
     return (
         <div className={s.disp}>
-            <div className={ErrorStyle}>{
+            <div className={MessageStyle}>{
                 Boolean(errorText)
                     ? errorText
                     : displayValue !== null
