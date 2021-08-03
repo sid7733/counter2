@@ -15,9 +15,7 @@ export function Display({errorText}: PropsType) {
         ? s.error
         : displayValue === savedMaxValue
             ? s.red
-            : displayValue
-                ? ''
-                : displayValue === 0
+            : (displayValue || displayValue ===0 )
                     ? ''
                     : s.message
 
