@@ -16,12 +16,15 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
         case 'SET-MAX-VALUE':
             return {
                 ...state,
-                unsavedMaxValue: action.maxValue
+                unsavedMaxValue: action.maxValue,
+                setDisabled: false
+
             }
         case 'SET-START-VALUE':
             return {
                 ...state,
-                unsavedStartValue: action.startValue
+                unsavedStartValue: action.startValue,
+                setDisabled: false
             }
 
         case 'SET-VALUES':
@@ -29,11 +32,15 @@ export const counterReducer = (state: InitialStateType = initialState, action: A
                 ...state,
                 savedMaxValue: state.unsavedMaxValue,
                 savedStartValue: state.unsavedStartValue,
-                displayValue: state.unsavedStartValue
+                displayValue: state.unsavedStartValue,
+                setDisabled: true
             }
 
         case 'INCREASE-DISPLAY-VALUE':
-            return {...state, displayValue: (state.displayValue || 0) + 1}
+            return {
+                ...state,
+                displayValue: (state.displayValue || 0) + 1,
+            }
 
         case 'SET-VALUES-FROM-LOCALSTORAGE':
             return {

@@ -18,6 +18,7 @@ function App() {
     const displayValue = useSelector<AppStateType, number | null>(state => state.counter.displayValue)
     const unsavedMaxValue = useSelector<AppStateType, number>(state => state.counter.unsavedMaxValue)
     const unsavedStartValue = useSelector<AppStateType, number>(state => state.counter.unsavedStartValue)
+    const setDisabled = useSelector<AppStateType, boolean>(state => state.counter.setDisabled)
     const dispatch = useDispatch()
 
     const SetCount = () => {
@@ -53,7 +54,7 @@ function App() {
                     <Setting/>
                 </div>
                 <div className={s.btn_container}>
-                    <Button onClick={SetCount} title="set" disabled={Boolean(errorText) }></Button>
+                    <Button onClick={SetCount} title="set"  disabled={Boolean(errorText) || setDisabled }/>
                 </div>
             </div>
 
@@ -63,8 +64,8 @@ function App() {
                     <Display errorText={errorText}/>
                 </div>
                 <div className={s.btn_container}>
-                    <Button onClick={IncCount} title="increase" disabled={displayValue === savedMaxValue}></Button>
-                    <Button onClick={ResetCount} title="reset" disabled={displayValue === savedStartValue}></Button>
+                    <Button onClick={IncCount} title="increase" disabled={displayValue === savedMaxValue}/>
+                    <Button onClick={ResetCount} title="reset" disabled={displayValue === savedStartValue}/>
                 </div>
             </div>
 
